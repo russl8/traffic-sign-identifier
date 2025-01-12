@@ -8,7 +8,7 @@ containing ~30000 images of 43 different road signs, using OpenCV and TensorFlow
 1. Create testing and training data by transforming each image into a structured format using OpenCV to convert each .ppm image to a NumPy array and resizing it, while labelling the image at the same time.
 2. Use scikit-learn to split the data into training and testing splits, leaving 40% of the data for testing and shuffling to ensure that the data is randomly distributed.
 3. Use one-hot encoding to create a binary vector for each sign category, as there are 43 possible categories (numbered 0-42), to support multi-class classification.
-4. Using a Keras Sequential Model as it is good for standard multi-class classification, definethe following layers:
+4. Using a Keras Sequential Model as it is good for standard multi-class classification, create the following layers:
   - Conv2D() as the CNN is dealing with a 2d input with the following parameters:
     -  filters=3 , as nothing complex is needed for a smaller dataset
     -  kernel_size=(2,2), shying away from the standard (3,3) as more precision seemed to work better
@@ -44,5 +44,5 @@ containing ~30000 images of 43 different road signs, using OpenCV and TensorFlow
 **Future Plans**
 
 - Find a way to get to the same accuracy or higher, using less epochs.
-- There seems to be a little overfitting present as the accuracy of the testing data < training data, so find a way to reduce that
+- There seems to be a little overfitting present as the accuracy of the testing data < training data, so find a way to reduce that.
 
