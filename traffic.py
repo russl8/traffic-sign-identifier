@@ -17,7 +17,7 @@ def main():
 
     # Check command-line arguments
     if len(sys.argv) not in [2, 3]:
-        sys.exit("Usage: python traffic.py data_directory [model.h5]")
+        sys.exit("Usage: python traffic.py <data_directory> <modelname.h5>")
 
     # Get image arrays and labels for all image files
     images, labels = load_data(sys.argv[1])
@@ -35,6 +35,9 @@ def main():
     model.fit(x_train, y_train, epochs=EPOCHS)
 
     # Evaluate neural network performance
+    print(f"Elements for training: {len(x_train)}")
+    print(f"Elements for testing: {len(x_test)}")
+
     print("Model evaluation using testing dataset: ")
     model.evaluate(x_test,  y_test, verbose=2)
 
@@ -52,8 +55,8 @@ def load_data(data_dir: str) -> (
     """
     returns a list of resized images of type ndarray, and another list of corresponding labels.
     """
-    images: list[np.ndarray] = [
-    ]  # a list of .ppm images converted into ndarrays.
+    images: list[np.ndarray] = []  # a list of .ppm images converted into ndarrays.
+
     # the sign corresponding to an image with each sign being a number [0-42]
     labels: list[int] = []
 
@@ -76,10 +79,10 @@ def get_model():
     """
     Returns a CNN model
     """
-    model = tf.keras.models.Sequential([
-        tf.keras.layers.Conv2D(
-            3,  # convolution layer, use 32 diff. filters on the image where
-            (2, 2),  # each filter is a 3x3 kernel
+    model = tf.keras.models.Sequential([ # seq model is good for standard multi-class classification
+        tf.keras.layers.Conv2D(  # apply convolution filters given a 2d input
+            3,  # Not too many layers needed.
+            (2, 2),  # each filter is a 2x2 kernel
             activation="relu",  # to learn more complex patterns
             # each image is a 30x30 pixel of 3 colours (red,yellow,green)
             input_shape=(30, 30, 3),
@@ -94,7 +97,7 @@ def get_model():
         # dont need too many layers for small dataset
         tf.keras.layers.Dense(64, activation="relu"),
         # dont remove too many neurons as dataset is not that large (15k training elements)
-        tf.keras.layers.Dropout(0.3),
+        tf.keras.layers.Dropout(0.2),
         tf.keras.layers.BatchNormalization(),  # to reduce overfitting (low dropout)
 
     
@@ -105,8 +108,8 @@ def get_model():
 
     ])
     model.compile(
-        optimizer="adam",
-        loss="categorical_crossentropy",
+        optimizer="adam", #works well with softmax
+        loss="categorical_crossentropy", # for multiclass classification
         metrics=["accuracy"])
     return model
 
