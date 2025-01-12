@@ -4,6 +4,7 @@ A Convolutional Neural Network (CNN) that classifies road signs, using the the G
 containing ~30000 images of 43 different road signs, using OpenCV and TensorFlow.
 
 **Process**
+
 1. Create testing and training data by transforming each image into a structured format using OpenCV to convert each .ppm image to a NumPy array and resizing it, while labelling the image at the same time.
 2. Use scikit-learn to split the data into training and testing splits, leaving 40% of the data for testing and shuffling to ensure that the data is randomly distributed.
 3. Use one-hot encoding to create a binary vector for each sign category, as there are 43 possible categories (numbered 0-42), to support multi-class classification.
@@ -29,17 +30,19 @@ containing ~30000 images of 43 different road signs, using OpenCV and TensorFlow
  - loss=categorical_crossentropy for multiclass classification
  - metrics=["accuracy"]
 
-
 **Usage**
+
 1. Clone the repositiory
 2. Install the GTSRB dataset
 3. Setup a virtual environment and install required libraries.
 4. Run the program via command line as follows: python traffic.py <GTSRB_directory> <yourmodelname.h5>
 
 **Training & Testing Logs**
+
 ![image](https://github.com/user-attachments/assets/ae7d8634-c55c-448f-adda-54caefb9bad9)
 
 **Future Plans**
+
 - Find a way to get to the same accuracy or higher, using less epochs.
 - There seems to be a little overfitting present as the accuracy of the testing data < training data, so find a way to reduce that
 
