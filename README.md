@@ -35,5 +35,10 @@ containing ~30000 images of 43 different road signs, using OpenCV and TensorFlow
 3. Setup a virtual environment and install required libraries.
 4. Run the program via command line as follows: python traffic.py <GTSRB_directory> <yourmodelname.h5>
 
+**Training & Testing Logs**
 ![image](https://github.com/user-attachments/assets/ae7d8634-c55c-448f-adda-54caefb9bad9)
+
+**Future Plans**
+- Find a way to get to the same accuracy or higher, using less epochs.
+- There seems to be a little overfitting present as the accuracy of the testing data < training data, so find a way to reduce that
 
