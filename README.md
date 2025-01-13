@@ -1,7 +1,6 @@
 # Traffic Sign Itentifier
 
-A Convolutional Neural Network (CNN) that classifies road signs, using the the German Traffic Sign Recognition Benchmark (GTSRB) dataset (http://benchmark.ini.rub.de/?section=gtsrb&subsection=news),
-containing ~30000 images of 43 different road signs, using OpenCV and TensorFlow.
+A Convolutional Neural Network (CNN) that classifies road signs, using the the German Traffic Sign Recognition Benchmark (GTSRB) dataset (https://www.ini.rub.de/upload/file/1470692848_f03494010c16c36bab9e/StallkampEtAl_GTSRB_IJCNN2011.pdf), containing ~30000 images of 43 different road signs, using OpenCV and TensorFlow.
 
 **Process**
 
